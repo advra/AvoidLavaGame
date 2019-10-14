@@ -1,0 +1,36 @@
+fileFormatVersion: 2
+guid: 72dcc8b536f3efa4b9867edbefd6f071
+ScriptedImporter:
+  fileIDToRecycleName:
+    2800000: Texture
+    7400000: Run
+    21300000: lava_back_ase_0
+    21300002: lava_back_ase_1
+    21300004: lava_back_ase_2
+    21300006: lava_back_ase_3
+    21300008: lava_back_ase_4
+    21300010: lava_back_ase_5
+    21300012: lava_back_ase_6
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: d995abe925d8a3e4d90caf1601182016, type: 3}
+  textureSettings:
+    textureType: 8
+    pixelsPerUnit: 32
+    meshType: 1
+    extrudeEdges: 1
+    spritePivot: {x: 0.5, y: 0.5}
+    generatePhysics: 1
+    wrapMode: 1
+    filterMode: 0
+    tileSize: {x: 32, y: 32}
+    tilePadding: {x: 0, y: 0}
+    tileOffset: {x: 0, y: 0}
+  animationSettings:
+  - animationName: Run
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 0; To: 6"
+  atlas: {instanceID: 0}
+  importType: 0
