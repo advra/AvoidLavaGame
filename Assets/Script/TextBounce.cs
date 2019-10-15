@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class TextBounce : MonoBehaviour {
 
-    public float distance;
+    public Vector2 distance;
+
     public float speed;
 
     Vector3 startPos;
@@ -13,10 +14,9 @@ public class TextBounce : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         startPos = transform.position;
-        if(distance == 0) distance = 5f;
         if (speed == 0) speed = 2f;
 
-        endPos = new Vector3(startPos.x, startPos.y - distance, startPos.z);
+        endPos = new Vector3(startPos.x-distance.x, startPos.y - distance.y, startPos.z);
     }
 	
 	// Update is called once per frame

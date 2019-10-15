@@ -14,6 +14,11 @@ public class DangerTextManager : MonoBehaviour {
     public GameObject rightArrow;
     public GameObject rightText;
 
+    public GameObject cautionLeftArrow;
+    public GameObject cautionLeftText;
+    public GameObject cautionRightArrow;
+    public GameObject cautionRightText;
+
     Vector2 leftTextStartPos;
     Vector2 _leftArrowOriginalPos;
 
@@ -29,7 +34,7 @@ public class DangerTextManager : MonoBehaviour {
         _playerControls = player.GetComponent<PlayerControls>();
         leftTextStartPos = leftText.transform.position;
         _leftArrowOriginalPos = leftArrow.transform.position;
-        hideAll();
+        hideAllDanger();
     }
 	
 	// Update is called once per frame
@@ -37,7 +42,7 @@ public class DangerTextManager : MonoBehaviour {
 
         if (!_playerControls.Alive)
         {
-            hideAll();
+            hideAllDanger();
             return;
         }
 
@@ -45,38 +50,52 @@ public class DangerTextManager : MonoBehaviour {
         _leftLavaDist = (player.transform.position.x - LeftLava.transform.position.x);
         _rightLavaDist = (RightLava.transform.position.x - player.transform.position.x);
 
-        // display for bottom
+        // display for bottom danger lava bottom
         if (_bottomLavaDist < 7f)
         {
-            //leftArrow.transform.position = _leftArrowOriginalPos;
             leftArrow.SetActive(true);
             leftText.SetActive(true);
-            rightArrow.SetActive(true);
-            rightText.SetActive(true);
-        }
-        else if(_leftLavaDist < 3.25f)
-        {
-            //leftArrow.transform.position = new Vector2(transform.position.x - 3f, transform.position.y - 1f);
-            leftArrow.SetActive(true);
-            leftText.SetActive(true);
-        }
-        else if (_rightLavaDist < 3.25f)
-        {
             rightArrow.SetActive(true);
             rightText.SetActive(true);
         }
         else
         {
-            hideAll();
+            hideAllDanger();
         }
-		
-	}
 
-    void hideAll()
+        // display for caution text left and right
+        if (_leftLavaDist < 3.25f)
+        {
+            cautionLeftArrow.transform.position = new Vector2(cautionLeftArrow.transform.position.x, player.transform.position.y);
+            cautionLeftArrow.SetActive(true);
+            cautionLeftText.SetActive(true);
+        }
+        else if (_rightLavaDist < 3.25f)
+        {
+            cautionRightArrow.transform.position = new Vector2(cautionRightArrow.transform.position.x, player.transform.position.y);
+            cautionRightArrow.SetActive(true);
+            cautionRightText.SetActive(true);
+        }
+        else
+        {
+            hideAllCaution();
+        }
+
+    }
+
+    void hideAllDanger()
     {
         leftArrow.SetActive(false);
         leftText.SetActive(false);
         rightArrow.SetActive(false);
         rightText.SetActive(false);
+    }
+
+    void hideAllCaution()
+    {
+        cautionLeftArrow.SetActive(false);
+        cautionLeftText.SetActive(false);
+        cautionRightArrow.SetActive(false);
+        cautionRightText.SetActive(false);
     }
 }

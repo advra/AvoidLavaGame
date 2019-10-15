@@ -38,8 +38,15 @@ public class DisplayScoreScreen : MonoBehaviour {
         pauseScreen.SetActive(false);
         gameOverScreen.SetActive(true);
         timeTextStat.text = guiTimer.getText();
-        comboTextStat.text = "Max Combo: " + playerControls.MaxCombo;
-        travelTextStat.text = "Traveled: " + playerControls.Meters.ToString("0.000");
+        if(playerControls.MaxCombo <= 1)
+        {
+            comboTextStat.text = "Max Combo: " + playerControls.MaxCombo;
+        }
+        else
+        {
+            comboTextStat.text = "Max Combos: " + playerControls.MaxCombo;
+        }
+        travelTextStat.text = "Traveled: " + playerControls.Meters.ToString("0.000") + "meters";
         menuButton.SetActive(false);
         guiTimer.gameObject.SetActive(false);
         comboText.gameObject.SetActive(false);

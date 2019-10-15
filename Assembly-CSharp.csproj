@@ -61,6 +61,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\CautionTextManager.cs" />
+    <Compile Include="Assets\PlatformScript.cs" />
     <Compile Include="Assets\Script\ChangeColor.cs" />
     <Compile Include="Assets\Script\ContinueButton.cs" />
     <Compile Include="Assets\Script\DangerTextManager.cs" />

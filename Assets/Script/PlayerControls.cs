@@ -18,6 +18,7 @@ public class PlayerControls : MonoBehaviour
     public TimeManager timeManager;
     public LineRenderer lineRenderer;
     public ParticleSystem SmokeParticleSystem;
+    public ParticleSystem jumpParticleSystem;
     public FollowCam followCam;
     public DisplayScoreScreen displayScore;
 
@@ -128,6 +129,7 @@ public class PlayerControls : MonoBehaviour
         _boxCollider = GetComponent<BoxCollider2D>();
         _circleCollider = GetComponent<CircleCollider2D>();
         _circleCollider.enabled = false;
+        _boxCollider.enabled = true;
         SmokeParticleSystem.Stop();
         followCam.GetComponent<FollowCam>();
     }
@@ -135,6 +137,9 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        jumpParticleSystem.transform.position = transform.position;
+
         if (isPlaying)
         {
             meters = transform.position.y - _startPos.y;
@@ -199,6 +204,9 @@ public class PlayerControls : MonoBehaviour
             return;
         }
 
+        _boxCollider.enabled = false;
+        _circleCollider.enabled = true;
+        jumpParticleSystem.Stop();
         _isAiming = false;
         clearRigidBodyForces();
         timeManager.RestoreTime();
@@ -235,9 +243,22 @@ public class PlayerControls : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            if (isPlaying)
+
+            if(_trueVelocity.x < 0.25f && _trueVelocity.y < 0.25f)
+            {
+                _circleCollider.enabled = false;
+                _boxCollider.enabled = true;
+            }
+
+            jumpParticleSystem.Play();
+
+            PlatformScript platformScript = collision.gameObject.GetComponent<PlatformScript>();
+
+            if (isPlaying && !platformScript.Touched)
             {
                 combo++;
+
+                platformScript.PlayerTouch();
             }
            
 
@@ -267,6 +288,7 @@ public class PlayerControls : MonoBehaviour
             {
                 maxCombo = combo;
             }
+            jumpParticleSystem.Stop();
             displayScore.show();
             isAlive = false;
             StartCoroutine(BurnPlayer());

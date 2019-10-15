@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4667592634073840}
   - component: {fileID: 212225329194245264}
   - component: {fileID: 61045666729491540}
+  - component: {fileID: 114050169137439418}
   m_Layer: 8
   m_Name: RockPlatform
   m_TagString: Ground
@@ -66,6 +67,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.0972958, y: 0.7932062}
   m_EdgeRadius: 0
+--- !u!114 &114050169137439418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1335480438307068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a763f8e08385b408cfeaa1b5dc94af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  regularColor: {r: 0.3764706, g: 0.2784314, b: 0.16470589, a: 1}
+  touchColor: {r: 0.5529412, g: 0.5529412, b: 1, a: 1}
 --- !u!212 &212225329194245264
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -102,7 +116,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d9e56bff80cf1624cb7df911449e297d, type: 3}
-  m_Color: {r: 0.3773585, g: 0.2792302, b: 0.16553932, a: 1}
+  m_Color: {r: 0.509434, g: 0.39929694, b: 0.27153793, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
